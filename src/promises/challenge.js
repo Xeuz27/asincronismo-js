@@ -79,3 +79,24 @@ const dataUpdate = {
 putData(`${API}/products/271`, dataUpdate) //se debe colocar el id del objeto que se quiere modificar
   .then((response) => response.json())
   .then((dataUpdate) => console.log(dataUpdate));
+
+//Eliminar un objeto indicando el id con DELETE
+function deleteData(urlApi) {
+  //no es necesario pasar la data
+  const response = fetch(urlApi, {
+    method: "DELETE",
+    mode: "cors",
+    credentials: "same-origin",
+    headers: {
+      "Content-Type": "application/json",
+    }, //no es necesario especificar el body
+  });
+  return response;
+}
+
+const idNumber = 271; //se debe colocar el id del objeto qu se quiere modificar
+
+deleteData(`${API}/products/${idNumber}`) //no es necesario pasar data
+  .then(() => {
+    console.log(`Borrado ${idNumber}`); //es opcional imprimir en consola
+  });
